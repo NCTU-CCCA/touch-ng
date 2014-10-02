@@ -1,5 +1,11 @@
 #!/bin/sh
 for i in $@
 do
-    cp /dev/null $i
+    if [ -f $i ]
+    then
+        # file exists, should update ${i}'s mtime, ctime, atime here
+        true
+    else
+        cp /dev/null $i
+    fi
 done
